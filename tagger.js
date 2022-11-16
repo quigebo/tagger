@@ -306,6 +306,7 @@
             this._new_tag(name);
             this._tags.push(name);
             this._input.value = this._tags.join(',');
+            this._input.dispatchEvent(new Event('change', { bubbles: true }))
             return true;
         },
         // --------------------------------------------------------------------------------------
@@ -328,6 +329,7 @@
                 return name !== tag;
             });
             this._input.value = this._tags.join(',');
+            this._input.dispatchEvent(new Event('change', { bubbles: true }))
             if (remove_dom) {
                 var tags = Array.from(this._ul.querySelectorAll('.label'));
                 var re = new RegExp('^\s*' + escape_regex(name) + '\s*$');
